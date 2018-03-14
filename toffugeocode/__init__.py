@@ -12,9 +12,8 @@ import geopy as gpy
 import xlrd
 import xlsxwriter
 
-# default_endereco=[  'endtrat', 'numEndTrat', 'compltrat',
-#                     'baitrat', 'municTra', 'esttrat', 'ceptrat']
-
+default_endereco=[  'endtrat', 'numEndTrat', 'compltrat','baitrat', 'municTra', 'esttrat', 'ceptrat']
+default_endereco=''
 # colocar o nome da tabela em excel
 def get_dataframe(filename):
     '''
