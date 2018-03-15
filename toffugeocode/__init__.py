@@ -13,7 +13,7 @@ import xlrd
 import xlsxwriter
 
 default_endereco=[  'endtrat', 'numEndTrat', 'compltrat','baitrat', 'municTra', 'esttrat', 'ceptrat']
-default_endereco=''
+default_key=''
 # colocar o nome da tabela em excel
 def get_dataframe(filename):
     '''
@@ -108,11 +108,18 @@ def modify_dataframe(df,vetor_endereco=default_endereco):
     novo_dataframe['endereco'] = endereco
     return novo_dataframe
 
-def save_dataframe_to_excel(df):
+def save_dataframe_to_excel(df,name):
     """
     salva o dataframe em formato excel no diretório atual
+
+    df = dataframe desejado
+
+    nome = 'name.xlsx' (escrever entre aspas, pois é uma string) 
     """
-    writer = pd.ExcelWriter('endereco_geoprocessado.xlsx')
+    # if not isinstance(name,str):
+    #     print('nome deve ser uma string e deve conter o .xlsx no fim')
+    #     return None
+    writer = pd.ExcelWriter(name)
     df.to_excel(writer)
     writer.save()
 
