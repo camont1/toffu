@@ -13,7 +13,10 @@ import xlrd
 import xlsxwriter
 
 default_endereco=[  'endtrat', 'numEndTrat', 'compltrat','baitrat', 'municTra', 'esttrat', 'ceptrat']
-default_endereco=''
+default_key=''
+
+
+
 # colocar o nome da tabela em excel
 def get_dataframe(filename):
     '''
