@@ -108,32 +108,12 @@ def modify_dataframe(df,vetor_endereco=default_endereco):
     novo_dataframe['endereco'] = endereco
     return novo_dataframe
 
-def save_dataframe_to_excel(df):
+def save_dataframe_to_excel(df,nome=''):
     """
     salva o dataframe em formato excel no diretório atual
     """
-    writer = pd.ExcelWriter('endereco_geoprocessado.xlsx')
+    writer = pd.ExcelWriter(nome+'endereco_geoprocessado.xlsx')
     df.to_excel(writer)
     writer.save()
+    return None
 
-
-
-
-# def get_geoinformation(df,key=default_key,vetor_endereco=default_endereco):
-#     gcode    = gpy.geocoders.GoogleV3(api_key=key)
-#     enderecos= get_endereco_from_dataframe(df,vetor_endereco)
-#     lat=[]
-#     lon=[]
-#     for endereco in enderecos:
-#         # TODO: colocar try e catch
-#         local = gcode.geocode(endereco,timeout=10) or None 
-#         if local is not None:
-#             lat.append(local.latitude)
-#             lon.append(local.longitude)
-#         else:
-#             lat.append('')
-#             lon.append('')
-#     df_novo = pd.DataFrame(df)
-#     df_novo['lat']=lat
-#     df_novo['lon']=lon
-#     return df_novo
