@@ -1,4 +1,4 @@
-# toffu geocode
+# toffu:  Geocoding mapping tool
 
 Small package to simplify geoprocessing tasks for Public Health
 researchers and general public.
@@ -6,25 +6,25 @@ researchers and general public.
 ## Basic usage
 
 ```python
-import toffugeocode as tg
+import toffu as tf
 
-dataframe = tg.get_dataframe('filename')
-dataframe_withgeoinfo = tg.get_geoinformation(dataframe,key=googleAPIkey)
+dataframe = tf.get_dataframe('filename')
+dataframe_withgeoinfo = tf.get_geoinformation(dataframe,key=googleAPIkey)
 ```
 
 ## Maps
 
 ```python
-import toffugeocode as tg
-import toffugeocode.mapa as tgm
+import toffugeocode as tf
+import toffugeocode.mapa as tfm
 
-df    = tg.get_dataframe('filename')
-df_geo= tg.get_geoinformation(dataframe,key=googleAPIkey)
+df    = tfm.get_dataframe('filename')
+df_geo= tfm.get_geoinformation(dataframe,key=googleAPIkey)
 
 # heatmap is also stored @ mapa_heat.html
-mapa,contagem = tgm.get_heatmap(df_geo)
+mapa,contagem = tfm.get_heatmap(df_geo)
 
-tgm.set_markers(df_geo) # optional
+tfm.set_markers(df_geo) # optional
 ```
 
 ## Requirements
