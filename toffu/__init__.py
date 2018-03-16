@@ -14,6 +14,9 @@ import xlsxwriter
 
 default_endereco=[  'endtrat', 'numEndTrat', 'compltrat','baitrat', 'municTra', 'esttrat', 'ceptrat']
 default_key=''
+
+
+
 # colocar o nome da tabela em excel
 def get_dataframe(filename):
     '''
@@ -108,39 +111,12 @@ def modify_dataframe(df,vetor_endereco=default_endereco):
     novo_dataframe['endereco'] = endereco
     return novo_dataframe
 
-def save_dataframe_to_excel(df,name):
+def save_dataframe_to_excel(df,nome=''):
     """
     salva o dataframe em formato excel no diretório atual
-
-    df = dataframe desejado
-
-    nome = 'name.xlsx' (escrever entre aspas, pois é uma string) 
     """
-    # if not isinstance(name,str):
-    #     print('nome deve ser uma string e deve conter o .xlsx no fim')
-    #     return None
-    writer = pd.ExcelWriter(name)
+    writer = pd.ExcelWriter(nome+'endereco_geoprocessado.xlsx')
     df.to_excel(writer)
     writer.save()
+    return None
 
-
-
-
-# def get_geoinformation(df,key=default_key,vetor_endereco=default_endereco):
-#     gcode    = gpy.geocoders.GoogleV3(api_key=key)
-#     enderecos= get_endereco_from_dataframe(df,vetor_endereco)
-#     lat=[]
-#     lon=[]
-#     for endereco in enderecos:
-#         # TODO: colocar try e catch
-#         local = gcode.geocode(endereco,timeout=10) or None 
-#         if local is not None:
-#             lat.append(local.latitude)
-#             lon.append(local.longitude)
-#         else:
-#             lat.append('')
-#             lon.append('')
-#     df_novo = pd.DataFrame(df)
-#     df_novo['lat']=lat
-#     df_novo['lon']=lon
-#     return df_novo
