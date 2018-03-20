@@ -52,10 +52,5 @@ def get_map(coords=default_map_coords,tiles='Stamen Toner'):
     """
     return folium.Map(location = coords, zoom_start=6,tiles=tiles)
 
-def entropy():
-    pass
-
-def entropy_estimative():
-    pass
 
 
