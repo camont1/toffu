@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import os
 #import sklearn as sk
 
 def entropy_image(filename,bins=30):
