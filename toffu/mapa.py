@@ -1,3 +1,4 @@
+
 import folium
 from folium.plugins import HeatMap
 import numpy as np
@@ -12,6 +13,8 @@ def get_heatmap(dataframe,coords=default_map_coords):
 
     além disso, cria-se o arquivo mapa_heat.html com o heatmap
     """
+    dataframe = dataframe[dataframe['lat'].apply(lambda y: isinstance(y,float) and not np.isnan(y))]
+
     mapa = get_map(coords)
     # obtem todos os pares (lat,lon) únicos dentro de um dataframe
     points = list(zip(dataframe['lat'],dataframe['lon']))
@@ -33,7 +36,7 @@ def set_markers(mapa,dataframe):
     além disso, cria-se o arquivo mapa_markers.html com o mapa+markers
     """
     for k in range(len(dataframe)):
-        set_marker_person(mapa,dataframe.loc[k])
+        set_marker_person(mapa,dataframe.iloc[k])
     return mapa.save('mapa_markers.html')
 
 def set_marker_person(mapa,linha_df=None):
