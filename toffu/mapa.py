@@ -28,7 +28,7 @@ def get_heatmap(dataframe,coords=default_map_coords,nome='mapa_heat.html',zoom=6
                     
     return mapa,counts
 
-def set_markers(mapa,dataframe,col_name='nome',name='mapa_markers'):
+def set_markers(mapa,dataframe,col_name='nome',names='mapa_markers'):
     """
     para cada linha em dataframe com coordenadas (lat,lon),
     adiciona-se um marcador ao mapa
@@ -37,15 +37,17 @@ def set_markers(mapa,dataframe,col_name='nome',name='mapa_markers'):
     """
     for k in range(len(dataframe)):
         set_marker_person(mapa,dataframe.iloc[k],col_name=col_name)
-    return mapa.save('%s.html' %(str(name)))
+    return mapa.save('%s.html' %(str(names)))
 
 def set_marker_person(mapa,linha_df=None,col_name='nome'):
     """
     adiciona-se um marcador ao mapa se linha_df possuir (lat,lon)
     """
     if 'lat' in linha_df:
+        print('asa')
         if len(str(linha_df['lat'])) > 0:
-            folium.Marker([linha_df['lat'], linha_df['lon']],popup=linha_df[col_name]).add_to(mapa)
+            print('ovo',linha_df)
+            folium.Marker([linha_df['lat'], linha_df['lon']],popup=str(linha_df[col_name])).add_to(mapa)
     return None
 
 def get_map(coords=default_map_coords,tiles='Stamen Toner',zoom=6):
