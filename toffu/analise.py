@@ -2,6 +2,13 @@ import numpy as np
 import cv2
 #import sklearn as sk
 
+def entropy(image,bins=30):
+    image = image/image.max()
+    p,_ = np.histogram(image,range=[0,1],bins=bins)
+    p = p/np.sum(p)
+    return -np.log(np.dot(p,p))
+
+
 def entropy_image(filename,bins=30):
     """
     extracts the renyi entropy of image stored under filename.

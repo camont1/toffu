@@ -91,7 +91,7 @@ def get_endereco_from_dataframe(df,vetor_endereco=default_endereco):
     '''
     endereco=[]
     for entrada in range(len(df)):
-        linha = df.loc[entrada]
+        linha = df.iloc[entrada]
         endereco.append( get_endereco(linha,vetor_endereco) or '')
     #novo_dataframe = pd.DataFrame(df)
     #novo_dataframe['endereco'] = endereco
@@ -105,7 +105,7 @@ def modify_dataframe(df,vetor_endereco=default_endereco):
     '''
     endereco=[]
     for entrada in range(len(df)):
-        linha = df.loc[entrada]
+        linha = df.iloc[entrada]
         endereco.append( get_endereco(linha,vetor_endereco) or '')
     novo_dataframe = pd.DataFrame(df)
     novo_dataframe['endereco'] = endereco
