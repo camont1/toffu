@@ -6,7 +6,7 @@ import numpy as np
 default_map_coords = [-22.3145, -49.0587]
 
 
-def get_heatmap(dataframe,coords=default_map_coords):
+def get_heatmap(dataframe,coords=default_map_coords,nome='mapa_heat.html',zoom=6):
     """
     cria-se um heatmap centrado nas coordenadas coords.
     A contagem por coordenada também é enviada como output.
@@ -15,16 +15,16 @@ def get_heatmap(dataframe,coords=default_map_coords):
     """
     dataframe = dataframe[dataframe['lat'].apply(lambda y: isinstance(y,float) and not np.isnan(y))]
 
-    mapa = get_map(coords)
+    mapa = get_map(coords,zoom=zoom)
     # obtem todos os pares (lat,lon) únicos dentro de um dataframe
     points = list(zip(dataframe['lat'],dataframe['lon']))
     counts = {point:0 for point in set(points)}
     for point in points:
         counts[point] += 1
     data = [ (point[0],point[1],counts[point]) for point in counts ]
-    heat = HeatMap( data,min_opacity=0.2,max_val =max(counts.values()))
+    heat = HeatMap( data,min_opacity=0.5,max_val =max(counts.values()))
     mapa.add_child(heat)
-    mapa.save('mapa_heat.html')
+    mapa.save(nome)
                     
     return mapa,counts
 
@@ -49,11 +49,11 @@ def set_marker_person(mapa,linha_df=None):
                           popup=linha_df['nome']).add_to(mapa)
     return None
 
-def get_map(coords=default_map_coords,tiles='Stamen Toner'):
+def get_map(coords=default_map_coords,tiles='Stamen Toner',zoom=6):
     """
     retorna um mapa folium centrado em coords
     """
-    return folium.Map(location = coords, zoom_start=6,tiles=tiles)
+    return folium.Map(location = coords, zoom_start=zoom,tiles=tiles)
 
 
 
