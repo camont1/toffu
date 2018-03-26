@@ -22,7 +22,7 @@ def get_heatmap(dataframe,coords=default_map_coords):
     for point in points:
         counts[point] += 1
     data = [ (point[0],point[1],counts[point]) for point in counts ]
-    heat = HeatMap( data,min_opacity=0.2,max_val =max(counts.values()))
+    heat = HeatMap( data,min_opacity=0.5,max_val =max(counts.values()))
     mapa.add_child(heat)
     mapa.save('mapa_heat.html')
                     
