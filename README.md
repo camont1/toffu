@@ -1,4 +1,4 @@
-# toffu:  Geocoding mapping tool
+# toffu:  Geocoding map tool
 
 Small package to simplify geoprocessing tasks for Public Health
 researchers and general public.
