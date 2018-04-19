@@ -48,6 +48,7 @@ def get_geoinformation(df,key=default_key,vetor_endereco=default_endereco):
     enderecos= get_endereco_from_dataframe(df,vetor_endereco)
     lat=[]
     lon=[]
+    localizacao=[]
     for endereco in enderecos:
         # TODO: colocar try e catch
         local = gcode.geocode(endereco,timeout=10) or None 
@@ -55,12 +56,14 @@ def get_geoinformation(df,key=default_key,vetor_endereco=default_endereco):
             print(local)
             lat.append(local.latitude)
             lon.append(local.longitude)
+            localizacao.append(local.address)
         else:
             lat.append('')
             lon.append('')
     df_novo = pd.DataFrame(df)
     df_novo['lat']=lat
     df_novo['lon']=lon
+    df_novo['localizacao']=localizacao
     return df_novo
 
 
