@@ -1,6 +1,7 @@
 ####################################################################
 ## Autora: Ana Carolina Pedrosa Monteiro
-## Última modificação: 13/03/18
+## e-mail: ana.carolina.monteiro@usp.br
+## Última modificação: 14/06/19
 ## Sabor: toffu
 ###################################################################
 
@@ -26,7 +27,7 @@ def get_dataframe(filename):
     excel = pd.ExcelFile(filename)
     return pd.read_excel(excel)
 
-def get_geoinformation(df,key=default_key,vetor_endereco=default_endereco):
+def get_geoinformation(df,vetor_endereco=default_endereco,key=default_key):
     """
     retorna o dataframe df atualizado com as coordenadas atualizadas
     com as latitudes 'lat' e longitudes 'lon'
@@ -49,11 +50,13 @@ def get_geoinformation(df,key=default_key,vetor_endereco=default_endereco):
     lat=[]
     lon=[]
     localizacao=[]
+    geo_code = []
     for endereco in enderecos:
         # TODO: colocar try e catch
         local = gcode.geocode(endereco,timeout=10) or None 
         if local is not None:
             print(local)
+            geo_code.append(local) # checagem da variável local para testes
             lat.append(local.latitude)
             lon.append(local.longitude)
             localizacao.append(local.address)
@@ -114,11 +117,11 @@ def modify_dataframe(df,vetor_endereco=default_endereco):
     novo_dataframe['endereco'] = endereco
     return novo_dataframe
 
-def save_dataframe_to_excel(df,nome=''):
+def save_to_excel(df,nome=''):
     """
     salva o dataframe em formato excel no diretório atual
     """
-    writer = pd.ExcelWriter(nome+'endereco_geoprocessado.xlsx')
+    writer = pd.ExcelWriter(nome+'_endereco_geoprocessado.xlsx')
     df.to_excel(writer)
     writer.save()
     return None
