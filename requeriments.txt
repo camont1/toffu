@@ -3,3 +3,5 @@ pandas
 folium
 numpy
 opencv-python
+pre-commit
+ipdb
