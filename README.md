@@ -18,8 +18,8 @@ dataframe_withgeoinfo = tf.get_geoinformation(dataframe,key=googleAPIkey)
 import toffugeocode as tf
 import toffugeocode.mapa as tfm
 
-df    = tfm.get_dataframe('filename')
-df_geo= tfm.get_geoinformation(dataframe,key=googleAPIkey)
+df = tfm.get_dataframe('filename')
+df_geo = tfm.get_geoinformation(dataframe,key=googleAPIkey)
 
 # heatmap is also stored @ mapa_heat.html
 mapa,contagem = tfm.get_heatmap(df_geo)
@@ -29,10 +29,8 @@ tfm.set_markers(df_geo) # optional
 
 ## Requirements
 
-- key API Google
-- geopy
-- pandas
-- folium
-- numpy
-
+All requirements are in `requiremenst.txt`. To install you need run this command:
+```bash
+pip install -r requirements.txt
+```
 
