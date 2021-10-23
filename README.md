@@ -30,7 +30,7 @@ tfm.set_markers(df_geo) # optional
 ## Requirements
 
 All requirements are in `requiremenst.txt`. To install you need run this command:
+
 ```bash
 pip install -r requirements.txt
 ```
-
