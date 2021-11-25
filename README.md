@@ -3,6 +3,14 @@
 Small package to simplify geoprocessing tasks for Public Health
 researchers and general public.
 
+## Create a virtual environment (venv):
+
+To create a virtual environment run this command in your bash:
+(usually we define the name venv as `.venv`, but you are free to decide what name you want)
+```
+python3 -m venv .name_of_venv
+```
+
 ## Requirements
 
 All requirements are in `requiremenst.txt`. To install you need run this command:
